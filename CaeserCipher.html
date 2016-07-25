@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Ceasar Cipher</title>
+		<link rel="stylesheet" type="text/css" href="CSS_Caesar_Cipher2.css">
+	</head>
+	<body>
+		<h1>Ceasar Cipher</h1>
+		<p>
+		<img src="https://lh6.ggpht.com/K6n2cPSoNWv4B9p1fe5yLUTRXsPnzaJGdrQ8_Mkpy8rlSeZ5zt1vzyglayk4n6gy_paZ=w300" alt="Caesar Cipher" style="width:304px;height:228px;" align="center">		
+		</br>
+		A Caesar Cipher was one of the first methods of encryting messages and consists of shifting each letter in the message over by n character in the alphabet.
+		</p>
+		<p>
+		Click on the 'Encode' and 'Decode' buttons below to view your cipher.
+		</p>
+		<input type="text" value="13" id="cipherAmount"></input>
+		</br>
+		<textarea id="encode"></textarea>
+		</br>
+		<button onclick="encodeFunction()">Encode Cipher</button> <button onclick="decodeFunction()">Decode Cipher</button>	
+		</br>
+		<output></output>
+		</br>
+		</br>
+		</br>
+		<center>
+		
+		
+		<iframe src="http://giphy.com/gifs/FX3OLJAUhOZNK/html5" width="480" height="298" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="http://giphy.com/gifs/thumbs-up-maybe-joaquin-phoenix-FX3OLJAUhOZNK">via GIPHY</a></p>
+		
+		</center>
+		<script>
+
+			function encodeFunction() {
+				Number.prototype.mod = function(n) {
+					return ((this%n)+n)%n;
+				};
+				var shift_amount = Number(document.getElementById("cipherAmount").value);
+				
+								
+				var lowerLetters = "abcdefghijklmnopqrstuvwxyz.#$%^&*()!?";				
+				var alpha = lowerLetters.split("");
+
+				var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				var alphaUpper = upperLetters.split("");
+				
+				var message = document.getElementById("encode").value;
+				//console.log("message here: " + message);
+				var newMessage = "";
+				
+					
+				for (var i = 0; i < message.length; i++){		
+					
+					if( alpha.indexOf(message[i]) > -1){
+						//console.log(shift_amount);
+						var newLetterIndex = (lowerLetters.indexOf(message[i]) + shift_amount).mod(lowerLetters.length);
+						newMessage = newMessage.concat(alpha[newLetterIndex]);						
+
+					} else if ( alphaUpper.indexOf(message[i]) > -1){
+				
+						console.log("letter to check:" + message[i]);
+						console.log(alphaUpper.indexOf(message[i]));
+						var newLetterIndex = (upperLetters.indexOf(message[i]) + shift_amount).mod(upperLetters.length);
+						newMessage = newMessage.concat(alphaUpper[newLetterIndex]);
+
+					} else {
+						newMessage = newMessage.concat(message[i]);				
+					}
+		
+				};			
+				
+				document.getElementById("encode").value = newMessage;
+
+			};
+			
+			function decodeFunction() {
+				Number.prototype.mod = function(n) {
+					return ((this%n)+n)%n;
+				};
+				var shift_amount = Number(document.getElementById("cipherAmount").value);
+				
+				
+				
+				//alert("this is cshift");
+				
+				var lowerLetters = "abcdefghijklmnopqrstuvwxyz.#$%^&*()!?";				
+				var alpha = lowerLetters.split("");
+
+				var upperLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+				var alphaUpper = upperLetters.split("");
+				
+				var message = document.getElementById("encode").value;
+				console.log("message here: " + message);
+				var newMessage = "";
+				
+					
+				for (var i = 0; i < message.length; i++){		
+					
+					if( alpha.indexOf(message[i]) > -1){
+
+						var newLetterIndex = (lowerLetters.indexOf(message[i]) - shift_amount).mod(lowerLetters.length);
+						newMessage = newMessage.concat(alpha[newLetterIndex]);						
+
+					} else if ( alphaUpper.indexOf(message[i]) > -1){
+				
+						console.log("letter to check:" + message[i]);
+						console.log(alphaUpper.indexOf(message[i]));
+						var newLetterIndex = (upperLetters.indexOf(message[i]) - shift_amount).mod(upperLetters.length);
+						newMessage = newMessage.concat(alphaUpper[newLetterIndex]);
+
+					} else {
+						newMessage = newMessage.concat(message[i]);				
+					}
+		
+				};			
+				
+				document.getElementById("encode").value = newMessage;
+
+			};
+			
+			
+			</script>
+	</body>
+</html>	

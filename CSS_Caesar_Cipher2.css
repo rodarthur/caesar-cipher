@@ -1,0 +1,73 @@
+@charset "UTF-8";
+
+<!--[if lt IE 9]>
+<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]--> 
+
+article, aside, figcaption, figure, footer, header, main, nav, section
+{
+    display: block;
+}    
+
+
+h1 { color: black; text-align: center; text-shadow: 1px 1px 1px rgba(0,0,0,0.3); font-size: 50px;
+}
+body{
+	background-position: center;
+	background-color: lightblue;
+	
+	
+}
+
+p{
+	text-align: center;
+	
+}
+
+button{
+	align: center;
+	padding: 1px;
+	width: 180px;
+	height: 30px;
+	border-width: 2px;	
+	border-color: black;
+	font-size: 16px;
+	
+}
+
+textarea{
+	width: 540px;
+	height: 70px;	
+	
+}
+
+output {
+    display: inline;
+	padding: 1px;
+	width: 540px;
+	height: 70px;
+	border-width: 2px;	
+	border-color: black;
+	font-size: 16px;	
+}
+
+iframe{
+	align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
